@@ -1,0 +1,55 @@
+================================================================================
+LOW-END LLM IMPLEMENTATION SPECIFICATION & PROMPT SHEET
+Project 7: Generative Neural Spike Train Augmentation & Diffusion Models
+Target Profile: Advanced AI BCI Startups, Computational Neuroscience Labs
+================================================================================
+
+[SYSTEM PROMPT FOR LOCAL / LOW-END LLM (Llama-3-8B, Qwen-2.5-Coder, DeepSeek-Coder)]
+You are an expert Neural Engineering AI systems developer. Your task is to implement Project #7 in Python 3.10+.
+Follow these strict guidelines:
+1. Write clean, modular, self-contained Python code using only standard libraries, NumPy, SciPy, and PyTorch.
+2. DO NOT require external datasets. Create synthetic bio-data generators inside the code using `numpy.random`.
+3. Implement each module step-by-step as outlined below.
+4. Include type annotations, detailed NumPy docstrings, and an `if __name__ == '__main__':` block verifying end-to-end execution.
+
+--------------------------------------------------------------------------------
+PROJECT ARCHITECTURE OVERVIEW:
+1D Conditional Time-Series Diffusion Model generating synthetic high-density spike raster plots validated via Power Spectral Density matching.
+
+SYNTHETIC DATA STRATEGY:
+Binary spike matrices (64 channels x 1000 time steps) representing multi-neuron population dynamics.
+
+--------------------------------------------------------------------------------
+STEP-BY-STEP MODULE IMPLEMENTATION INSTRUCTIONS:
+
+* Module 1: Spike Raster Data Engine:
+  Create synthetic multi-neuron spike matrices with correlated ensemble firing patterns.
+
+* Module 2: 1D Time-Series Diffusion Model:
+  Implement PyTorch Denoising Diffusion Probabilistic Model (DDPM) for binary spike matrices.
+
+* Module 3: Biological Fidelity Metrics:
+  Compute Power Spectral Density (PSD) and cross-correlation similarity scores.
+
+--------------------------------------------------------------------------------
+REFERENCE CODE STARTER SKELETON:
+```python
+import torch
+import torch.nn as nn
+
+class MiniUnedDDPM(nn.Module):
+    def __init__(self, channels=64):
+        super().__init__()
+        self.conv = nn.Sequential(
+            nn.Conv1d(channels, 128, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.Conv1d(128, channels, kernel_size=3, padding=1)
+        )
+    def forward(self, x, t):
+        return self.conv(x)
+
+```
+
+INSTRUCTIONS TO EXECUTOR:
+Execute each module sequentially. Ensure all array shapes align perfectly across data generation, processing, and prediction pipeline stages.
+================================================================================
